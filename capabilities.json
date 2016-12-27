@@ -1,0 +1,322 @@
+{
+	"dataRoles" : [
+		{
+			"displayName" : "Values",
+			"description" : "Add two or more numeric columns",
+			"kind" : "Grouping",
+			"name" : "Values"
+		},
+		{
+			"displayName" : "Data point labels",
+			"description" : "Short label(text or numeric) for each data point (optional)",
+			"kind" : "GroupingOrMeasure",
+			"name" : "PointLabels"
+		}
+	],
+	"dataViewMappings" : [
+		{
+			"conditions" : [
+				{
+					"Values" : {
+						"max" : 1000
+					},
+					"PointLabels" : {
+						"max" : 1
+					}
+				}
+			],
+			"scriptResult" : {
+				"dataInput" : {
+					"table" : {
+						"rows" : {
+							"select" : [
+								{
+									"for" : {
+										"in" : "Values"
+									}
+								},
+								{
+									"for" : {
+										"in" : "PointLabels"
+									}
+								}
+							],
+							"dataReductionAlgorithm" : {
+								"top" : {}
+							}
+						}
+					}
+				},
+				"script" : {
+					"scriptProviderDefault" : "R",
+					"scriptOutputType" : "png",
+					"source" : {
+						"objectName" : "rcv_script",
+						"propertyName" : "source"
+					},
+					"provider" : {
+						"objectName" : "rcv_script",
+						"propertyName" : "provider"
+					}
+				}
+			}
+		}
+	],
+	"objects" : {
+		"settings_prepocessing_params" : {
+			"displayName" : "Data preprocessing",
+			"properties" : {
+				"show" : {
+					"type" : {
+						"bool" : true
+					}
+				},
+				"scaleData" : {
+					"displayName" : "Scale data",
+					"description" : "Used to standardize the range of features of data",
+					"type" : {
+						"bool" : true
+					}
+				},
+				"applyPCA" : {
+					"displayName" : "Apply PCA",
+					"description" : "Recommended for data with more than two dimensions",
+					"type" : {
+						"bool" : true
+					}
+				}
+			}
+		},
+		"settings_clusterNum_params" : {
+			"displayName" : "Clusters definition",
+			"description" : "Refine the density and size of clusters",
+			"properties" : {
+				"granularityParameterType" : {
+					"displayName" : "Granularity method",
+					"description" : "Select the method used to set the granularity parameter (eps)",
+					"type" : {
+						"enumeration" : [
+							{
+								"displayName" : "auto",
+								"value" : "auto"
+							},
+							{
+								"displayName" : "scale",
+								"value" : "scale"
+							},
+							{
+								"displayName" : "manual",
+								"value" : "manual"
+							}
+						]
+					}
+				},
+				"percentile" : {
+					"displayName" : "Granularity",
+					"description" : "User-defined granularity. Smaller values result in more clusters.",
+					"type" : {
+						"numeric" : true
+					}
+				},
+				"eps" : {
+					"displayName" : "eps: reachability distance",
+					"description" : "Proximity to determine whether points are considered part of a cluster. Smaller values result in more clusters and more outliers.",
+					"type" : {
+						"numeric" : true
+					}
+				},
+				"autoParamMinPts" : {
+					"displayName" : "Find minimum points automatically",
+					"type" : {
+						"bool" : true
+					}
+				},
+				"minPtsParam" : {
+					"displayName" : "Minimum points per seed",
+					"description" : "Reachability minimum number of points. Smaller values result in more clusters.",
+					"type" : {
+						"numeric" : true
+					}
+				}
+			}
+		},
+		"settings_viz_params" : {
+			"displayName" : "Visual appearance",
+			"properties" : {
+				"show" : {
+					"type" : {
+						"bool" : true
+					}
+				},
+				"drawEllipse" : {
+					"displayName" : "Draw ellipse",
+					"type" : {
+						"bool" : true
+					}
+				},
+				"drawConvexHull" : {
+					"displayName" : "Draw convex hull",
+					"type" : {
+						"bool" : true
+					}
+				},
+				"drawCenters" : {
+					"displayName" : "Draw centroid",
+					"type" : {
+						"bool" : true
+					}
+				},
+				"percentile" : {
+					"displayName" : "Point opacity",
+					"type" : {
+						"numeric" : true
+					}
+				},
+				"weight" : {
+					"displayName" : "Point size",
+					"type" : {
+						"numeric" : true
+					}
+				}
+			}
+		},
+		"settings_labeling_params" : {
+			"displayName" : "Points labeling",
+			"properties" : {
+				"show" : {
+					"type" : {
+						"bool" : true
+					}
+				},
+				"textSize" : {
+					"displayName" : "Font size",
+					"type" : {
+						"numeric" : true
+					}
+				},
+				"percentile" : {
+					"displayName" : "Label opacity",
+					"type" : {
+						"numeric" : true
+					}
+				},
+				"maxLenPointLabel" : {
+					"displayName" : "Limit label length",
+					"description" : "Abbreviate labels to a limited length",
+					"type" : {
+						"numeric" : true
+					}
+				},
+				"percentile1" : {
+					"displayName" : "Percentage of points labeled",
+					"description" : "Avoids cluttering text",
+					"type" : {
+						"numeric" : true
+					}
+				}
+			}
+		},
+		"settings_representative_params" : {
+			"displayName" : "Cluster representative labeling",
+			"description" : "Add a label to the typical representative of each cluster",
+			"properties" : {
+				"show" : {
+					"type" : {
+						"bool" : true
+					}
+				},
+				"textSize" : {
+					"displayName" : "Font size",
+					"type" : {
+						"numeric" : true
+					}
+				},
+				"maxLenDelegate" : {
+					"displayName" : "Limit label length",
+					"description" : "Abbreviate labels to a limited length",
+					"type" : {
+						"numeric" : true
+					}
+				}
+			}
+		},
+		"settings_legend_params" : {
+			"displayName" : "Legend",
+			"description" : "Parameters for the clustering plot legend",
+			"properties" : {
+				"show" : {
+					"type" : {
+						"bool" : true
+					}
+				},
+				"palleteType" : {
+					"displayName" : "Pallete type",
+					"description" : "Color pallete type",
+					"type" : {
+						"enumeration" : [
+							{
+								"displayName" : "rainbow",
+								"value" : "rainbow"
+							},
+							{
+								"displayName" : "cm",
+								"value" : "cm"
+							},
+							{
+								"displayName" : "topo",
+								"value" : "topo"
+							},
+							{
+								"displayName" : "terrain",
+								"value" : "terrain"
+							},
+							{
+								"displayName" : "heat",
+								"value" : "heat"
+							}
+						]
+					}
+				},
+				"outLierCol" : {
+					"displayName" : "Color of outliers",
+					"type" : {
+						"fill" : {
+							"solid" : {
+								"color" : true
+							}
+						}
+					}
+				}
+			}
+		},
+		"settings_additional_params" : {
+			"displayName" : "Additional parameters",
+			"description" : "Additional and experimental parameters",
+			"properties" : {
+				"showWarnings" : {
+					"displayName" : "Show warnings",
+					"type" : {
+						"bool" : true
+					}
+				}
+			}
+		},
+		"rcv_script" : {
+			"properties" : {
+				"provider" : {
+					"type" : {
+						"text" : true
+					}
+				},
+				"source" : {
+					"type" : {
+						"scripting" : {
+							"source" : true
+						}
+					}
+				}
+			}
+		}
+	},
+	"suppressDefaultTitle" : true
+}

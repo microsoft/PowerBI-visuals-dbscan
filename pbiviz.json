@@ -1,0 +1,24 @@
+{
+ "visual": {
+ "name": "PowerBI-visuals-clustering-dbscan",
+"displayName": "clustering with outliers",
+"guid": "PBI_CV_967A08ED_59CD_405F_B41A_8CE2050AD30E",
+"visualClassName": "Visual",
+"version": "1.0.0",
+"description": "<span>Clustering enables you to find similarity groups in your data, using the well-known <span style='font-style:italic'> density-based spatial clustering of applications with noise </span>(DBSCAN). Unlike many other clustering algorithms, DBSCAN also finds outliers. Settings for the visual let you control and refine algorithm parameters to meet your needs. <br/><br/><span style='font-style:italic'>Service prerequisites:</span> This R-powered custom visual is used without any modifications in the Power BI service <br/><br /><span style='font-style:italic'>Desktop prerequisites:</span> To run R scripts in Power BI Desktop, you must separately install R on your local computer. <br />You can download and install R for free from the <a href='https://mran.revolutionanalytics.com/download/'>Revolution Open download page</a> or the <a href='https://cran.r-project.org/bin/windows/base/'>CRAN Repository</a>. For more information, see <a href='https://powerbi.microsoft.com/en-us/documentation/powerbi-desktop-r-powered-custom-visuals/'>this article</a>. <br /><br /> <span style='font-style:italic'> R package dependencies(auto-installed): </span> scales, fpc, car, dbscan <br /><br /> <span style='font-style:italic'> Supports R versions: </span> R 3.3.2, R 3.3.1, R 3.3.0, MRO 3.3.2, MRO 3.3.1, MRO 3.3.0 <br /></span>",
+"supportUrl": "http://community.powerbi.com/",
+"gitHubUrl": "" 
+},
+"apiVersion": "1.2.0",
+"author": {
+ "name": "",
+"email": "" 
+},
+"assets": {
+ "icon": "assets/icon.png" 
+},
+"externalJS": [],
+"style": "style/visual.less",
+"capabilities": "capabilities.json",
+"dependencies": "dependencies.json" 
+}

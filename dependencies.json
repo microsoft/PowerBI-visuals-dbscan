@@ -1,0 +1,24 @@
+{
+ "cranPackages": [
+ {
+ "name": "scales",
+"displayName": "scales: Scale Functions for Visualization",
+"url": "https://cran.r-project.org/web/packages/scales/index.html" 
+},
+{
+ "name": "fpc",
+"displayName": "fpc: Flexible Procedures for Clustering",
+"url": "https://cran.r-project.org/web/packages/fpc/index.html" 
+},
+{
+ "name": "car",
+"displayName": "car: Companion to Applied Regression",
+"url": "https://cran.r-project.org/web/packages/car/index.html" 
+},
+{
+ "name": "dbscan",
+"displayName": "dbscan: Density Based Clustering of Applications with Noise (DBSCAN) and Related Algorithms",
+"url": "https://cran.r-project.org/web/packages/dbscan/index.html" 
+} 
+] 
+}
