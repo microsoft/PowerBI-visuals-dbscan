@@ -34,11 +34,7 @@
 # REFERENCES: https://cran.r-project.org/package=dbscan
 #             https://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Clustering/Density-Based_Clustering
 
-############ User Parameters #########
 
-#DEBUG 
-#save(list = ls(all.names = TRUE), file='C:/Users/boefraty/projects/PBI/R/tempData.Rda')
-#load(file='C:/Users/boefraty/projects/PBI/R/tempData.Rda')
 
 ###############Library Declarations###############
 
@@ -657,7 +653,7 @@ if (exists("settings_additional_params_showWarnings"))
     
     
     #DBSCAN call 
-    cl <- dbscan::dbscan(dataset, eps, minPts = minPtsParam, scale = FALSE, borderPoints = TRUE)
+    cl <- dbscan::dbscan(dataset, eps, minPts = minPtsParam)
     
     numOfClusters = max(cl$cluster)
     
