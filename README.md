@@ -1,2 +1,2 @@
 # PowerBI-visuals-dbscan
-Density-based spatial clustering of applications with noise visualization
+A PowerBI visualization for density-based spatial clustering of applications with noise.
